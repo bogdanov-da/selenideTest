@@ -53,6 +53,7 @@ task cucumber() {
             args = [
                     '--plugin', 'pretty',
                     '--plugin', 'html:build/cucumber-report.html',
+                    '--plugin', 'json:build/cucumber-report.json',
                     '--glue', 'classpath:steps',
                     '--glue', 'classpath:hooks', 'src/test/resources'
             ]

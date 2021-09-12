@@ -9,6 +9,7 @@ public class Hooks {
         Configuration.browser = "chrome";
         Configuration.startMaximized = true;
         Configuration.timeout = 5000;
+        Configuration.headless = true;
         System.out.println("10!");
     }
 
