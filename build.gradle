@@ -41,6 +41,7 @@ configurations {
     cucumberRuntime {
         extendsFrom implementation
     }
+    testCompile
 }
 
 task cucumber() {
