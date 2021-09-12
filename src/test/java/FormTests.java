@@ -31,7 +31,7 @@ public class FormTests {
         Configuration.startMaximized = true;
         Configuration.timeout = 5000;
     }
-
+/*
     @Test
     @Step("Fill form")
     void fillForm() {
@@ -50,7 +50,7 @@ public class FormTests {
         registrationFormPage.selectCity(0);
         registrationFormPage.submitBtnClick();
     }
-
+*/
     @Test
     public void chooseFile() {
         open("automation-practice-form");
@@ -65,7 +65,7 @@ public class FormTests {
         Assertions.assertTrue($(By.id("doubleClickMessage")).isDisplayed());
         Assertions.assertTrue($(By.id("rightClickMessage")).isDisplayed());
     }
-
+/*
     @Test
     public void drugAndDropTests() {
         open("droppable");
@@ -87,29 +87,10 @@ public class FormTests {
     @Test
     public void alertTests() throws InterruptedException {
         open("alerts");
-
-     /*   WebElement alertBtn = webDriver.findElement(By.id("timerAlertButton"));
-        alertBtn.click();
-        wait.until(ExpectedConditions.alertIsPresent());
-        Alert alert = webDriver.switchTo().alert();
-        System.out.println(alert.getText());
-        alert.accept();
-*/
         SelenideElement alertBtn2 = $(By.id("confirmButton"));
         alertBtn2.click();
         Alert alert2 = Selenide.switchTo().alert();
         alert2.dismiss();
-
-
-     /*   WebElement alertBtn3 = webDriver.findElement(By.id("promtButton"));
-        alertBtn3.click();
-        wait.until(ExpectedConditions.alertIsPresent());
-        Alert alert3 = webDriver.switchTo().alert();
-        alert3.accept();
-        alert3.sendKeys("арарар");
-        Thread.sleep(7000);*/
-
-
     }
 
 
@@ -141,4 +122,5 @@ public class FormTests {
         SelenideElement button = $(By.id("colorChange")).shouldHave(Condition.cssValue("color", "rgba(220, 53, 69, 1)"), Duration.ofSeconds(5));
         button.click();
     }
+    */
 }
