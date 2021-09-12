@@ -1,0 +1,60 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.5'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.4.2'
+    implementation 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
+    testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.32'
+    implementation group: 'com.codeborne', name: 'selenide', version: '5.24.2'
+    implementation 'io.qameta.allure:allure-selenide:2.14.0'
+    implementation group: 'io.cucumber', name: 'cucumber-java', version: '6.11.0'
+    testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '6.11.0'
+    //implementation group: 'ru.alfabank.tests', name: 'akita', version: '4.1.3'
+}
+
+
+test {
+    useJUnitPlatform()
+    maxParallelForks = 1
+}
+
+allure {
+    autoconfigure = true
+    version = '2.14.0'
+    downloadLink = 'https://github.com/allure-framework/allure2/releases/download/2.14.0/allure-2.14.0.zip'
+    useJUnit5 {
+        version = '2.14.0'
+    }
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom implementation
+    }
+}
+
+task cucumber() {
+    dependsOn assemble, testClasses
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = [
+                    '--plugin', 'pretty',
+                    '--plugin', 'html:build/cucumber-report.html',
+                    '--glue', 'classpath:steps',
+                    '--glue', 'classpath:hooks', 'src/test/resources'
+            ]
+        }
+    }
+}
