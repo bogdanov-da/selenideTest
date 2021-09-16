@@ -15,6 +15,7 @@ import java.util.List;
 
 import static com.codeborne.selenide.Selenide.*;
 
+@Tag("ui")
 @Epic("Book Tests")
 @Feature("Form Tests")
 public class FormTests {
