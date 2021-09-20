@@ -29,6 +29,7 @@ tasks.register("apiTests", Test).configure() {
     useJUnitPlatform{
         includeTags 'api'
     }
+    jvmArgs "-noverify"
 }
 
 tasks.register("testUi", Test).configure() {
