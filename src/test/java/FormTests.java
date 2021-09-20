@@ -22,7 +22,7 @@ public class FormTests {
     private RegistrationFormPage registrationFormPage;
 
     @BeforeAll
-    @Step("Set Up")
+ //   @Step("Set Up")
     static void beforeAll() {
         SelenideLogger.addListener("AllureListener", new AllureSelenide().screenshots(true).savePageSource(true));
 
