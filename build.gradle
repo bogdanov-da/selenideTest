@@ -36,6 +36,7 @@ tasks.register("testUi", Test).configure() {
     useJUnitPlatform{
         includeTags 'ui'
     }
+    jvmArgs "-noverify"
 }
 
 allure {
